@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { MapEventsService } from '../Services/map-events.service';
 import { RedireccionUrlPantallaFiltrosService } from '../Services/redireccion-url-pantalla-filtros.service';
 import { Router } from '@angular/router';
+import { SharedDataMapaFiltrosService } from '../Services/shared-data-mapa-filtros.service';
+
+
 
 
 @Component({
@@ -11,7 +13,23 @@ import { Router } from '@angular/router';
 })
 export class MapaComponent {
 
-  constructor(private mapEventsService: MapEventsService, private redireccionUrlPantallaFiltrosService: RedireccionUrlPantallaFiltrosService) {}
+  isComponentOpen: boolean = false;
+
+
+
+  constructor(
+    private redireccionUrlPantallaFiltrosService: RedireccionUrlPantallaFiltrosService,
+    private router: Router,
+    private sharedDataService: SharedDataMapaFiltrosService
+  ) {
+    // Verifica si la ruta actual es la raíz '/'
+    if (this.router.url === '/') {
+      // Redirige a la página de inicio si se accede a la ruta raíz
+      this.router.navigate(['/home']);
+    }
+
+    // Resto de la lógica en el constructor, incluyendo otros servicios inyectados
+  }
 
 
   
@@ -33,12 +51,29 @@ export class MapaComponent {
 
       const countryId = clickedElement.getAttribute('id');
 
-      if (countryId !== null) { // se verifica que el id del pais no es null
-        this.redireccionUrlPantallaFiltrosService.navegarAlUrlFiltros(countryId)
+
+      if (countryId !== null && country != null) { // se verifica que el id del pais no es null
+        //this.redireccionUrlPantallaFiltrosService.navegarAlUrlFiltros(countryId)
+
+        this.sharedDataService.setNombrePais(country) //le pasamos la variable country a un servicio que tambie usa la pantalla de filtros
+        this.sharedDataService.setNIdPais(countryId)
+
+
+        this.router.navigate(['/home/pais', country]);
+        this.isComponentOpen = false; //con true se pone borroso el mapa
+
       }
 
     }
   }
+
+  onClose() { //para sacar lo borroso, aca tambien verificamos que la ventana de filtros se cerro
+    this.isComponentOpen = false; // Cambiar el valor cuando se cierre la pantalla de filtros
+  }
+
+
+
+
 
 
   

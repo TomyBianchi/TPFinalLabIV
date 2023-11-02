@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, importProvidersFrom } from '@angular/core';
+import { Router } from '@angular/router';
+import { SharedDataMapaFiltrosService } from '../Services/shared-data-mapa-filtros.service';
 
 
 @Component({
@@ -7,10 +9,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./llamada-pantalla-filtros.component.css']
 })
 export class LlamadaPantallaFiltrosComponent {
+
+  nombrePais!:string;
+  idPais!:string;
+
+
   
-  constructor() {
-    console.log('LlamadaPantallaFiltrosComponent constructor called');
+  
+  constructor(private router: Router, private sharedData: SharedDataMapaFiltrosService)
+  {
+    this.idPais = this.sharedData.getIdPais();
+    this.nombrePais = this.sharedData.getNombrePais();
   }
+
+
+
+
+  redirectToHome() { //para cerrar la ventana de los filtros
+    this.router.navigate(['/home']);
+  }
+
 
   
 }

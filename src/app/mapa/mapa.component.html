@@ -23,8 +23,9 @@
 
       <app-aside-left></app-aside-left>
 
-<svg (click)="onMapClick($event)"
+<svg #mapa (click)="onMapClick($event)"
 
+[ngClass]="{'blurred': isComponentOpen}"
 
 xmlns:mapsvg="http://mapsvg.com"
 xmlns:dc="http://purl.org/dc/elements/1.1/"

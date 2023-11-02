@@ -1,5 +1,5 @@
 <div class="filtro-container">
-    <h3>Pais: nombrePais</h3>
+    <h3>{{nombrePais}}</h3>
     <div class="filtros-row">
       <div class="filtro-box">
         <h4>Tendencias</h4>
@@ -68,7 +68,7 @@
       <button class="btn btn-primary buscar-button">Buscar</button>
     </div>
 
-    <button class="close-button" >
+    <button class="close-button" (click)="redirectToHome()">
         X
       </button>
       

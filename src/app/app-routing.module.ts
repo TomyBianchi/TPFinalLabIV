@@ -4,8 +4,8 @@ import { MapaComponent } from './mapa/mapa.component';
 import { LlamadaPantallaFiltrosComponent } from './llamada-pantalla-filtros/llamada-pantalla-filtros.component';
 
 const routes: Routes = [
-  { path: '', component: MapaComponent },
-  { path: 'pais/:id', component: LlamadaPantallaFiltrosComponent },
+  { path: 'home', component: MapaComponent },
+  { path: 'home/pais/:nombrePais', component: LlamadaPantallaFiltrosComponent },  
 ];
 
 @NgModule({

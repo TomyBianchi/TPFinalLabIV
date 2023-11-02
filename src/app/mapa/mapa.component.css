@@ -2,7 +2,20 @@
     --rojo: #FF5858;
     --gris: #E3E3E3;
 }
+.blurred {
+  filter: blur(5px); /* Ajusta el valor de desenfoque según tu preferencia */
+  transition: filter 0.5s; /* Agrega una transición suave de desenfoque */
+}
 
+.map-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 1; /* Asegura que esté por encima del mapa */
+}
 * {
     margin: 0;
     padding: 0;
