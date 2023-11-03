@@ -15,14 +15,11 @@ export class LlamadaPantallaFiltrosComponent {
 
 
   
-  
   constructor(private router: Router, private sharedData: SharedDataMapaFiltrosService)
   {
     this.idPais = this.sharedData.getIdPais();
     this.nombrePais = this.sharedData.getNombrePais();
   }
-
-
 
 
   redirectToHome() { //para cerrar la ventana de los filtros

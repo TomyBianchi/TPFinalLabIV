@@ -4,18 +4,16 @@ import { Router } from '@angular/router';
 import { SharedDataMapaFiltrosService } from '../Services/shared-data-mapa-filtros.service';
 
 
-
-
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.css']
 })
+
+
 export class MapaComponent {
 
   isComponentOpen: boolean = false;
-
-
 
   constructor(
     private redireccionUrlPantallaFiltrosService: RedireccionUrlPantallaFiltrosService,
@@ -32,7 +30,6 @@ export class MapaComponent {
   }
 
 
-  
 
   onMapClick(event: MouseEvent) {
     // Obtén las coordenadas del clic
@@ -70,14 +67,5 @@ export class MapaComponent {
   onClose() { //para sacar lo borroso, aca tambien verificamos que la ventana de filtros se cerro
     this.isComponentOpen = false; // Cambiar el valor cuando se cierre la pantalla de filtros
   }
-
-
-
-
-
-
-  
-  
-
 
 }
